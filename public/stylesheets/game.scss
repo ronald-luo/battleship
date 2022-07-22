@@ -1,0 +1,57 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #1E1E1E;
+}
+
+main.game-container {
+    top: 10vh;
+    display: block;
+    position: relative;
+    margin: auto;
+    padding: 30px 10px;
+    width: 375px;
+
+    h1 {
+        font-size: 30px;
+        color: white;
+        text-align: center;
+        margin: 1em 0 1em 0;
+        font-family: "Source Code Pro";
+    }
+
+    section.main-board {
+        width: 272px;
+        height: 272px;
+        margin: 1em auto 1em auto;
+        background-color: rgba(58, 58, 60, 1);
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+
+        .main-cell {
+            &:hover {
+                border: 1px solid white;
+            }
+        }
+
+        .ship {
+            background-color: rgba(164, 164, 164, 1);
+        }
+    }
+
+    section.side-board {
+        width: 138px;
+        height: 138px;
+        margin: 1em auto 1em auto;
+        background-color: rgba(58, 58, 60, 1);
+    }
+}
