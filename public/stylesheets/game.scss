@@ -37,21 +37,116 @@ main.game-container {
         grid-template-columns: repeat(10, 1fr);
         grid-template-rows: repeat(10, 1fr);
 
-        .main-cell {
+        .cell-main {
             &:hover {
                 border: 1px solid white;
+                cursor: pointer;
             }
         }
 
-        .ship {
+        .cell-sea {
+            background-color: rgba(58, 58, 60, 1);
+        } 
+
+        .cell-miss {
             background-color: rgba(164, 164, 164, 1);
+        }
+        
+        .cell-ship {
+            background-color: rgba(146, 191, 244, 1);
+        }
+        
+        .cell-hit {
+            background-color: rgba(229, 128, 74, 1)
         }
     }
 
     section.side-board {
+        padding: 1em;
         width: 138px;
         height: 138px;
         margin: 1em auto 1em auto;
         background-color: rgba(58, 58, 60, 1);
+        display: grid;
+        justify-content: center;
+        align-content: center;
+
+        .cell-side {
+            width: 27.2px;
+            height: 27.2px;
+        }
+
+        .cell-sea {
+            background-color: rgba(58, 58, 60, 1);
+        } 
+
+        .cell-ship {
+            background-color: rgba(146, 191, 244, 1);
+        }
+
+        .start-button {
+            width: auto;
+            height: auto;
+            background-color: darken(rgba(222, 100, 100, 1), 7%);
+            color: white;
+            font-family: "Source Code Pro";
+            padding: 8px 12px;
+            font-size: 16px;
+            border: none;
+
+            &:active {
+                color: black;
+            }
+
+            &:hover {
+                transition: 0.3s;
+                cursor: pointer;
+                background-color: darken(rgba(222, 100, 100, 1), 10%);
+            }
+        }
+    }
+
+    .rotate-button-container {
+        width: 32px;
+        height: 32px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+
+
+        .rotate-button {
+            background-color:rgba(229, 128, 74, 1);
+            color: white;
+            border: none;
+            display: flex;
+
+            &:hover {
+                transition: 0.3s;
+                background-color: darken(rgba(229, 128, 74, 1), 5%);
+                cursor: pointer;
+            }
+
+            &:active {
+                background-color: darken(rgba(229, 128, 74, 1), 5%);
+
+                svg {
+                    fill: rgb(0, 0, 0);
+                }
+            }
+
+            svg {
+                fill: white;
+                transition: 0.1s;
+                align-self: center;
+            }
+        }
+    }
+
+    h2 {
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        margin: 1em 0 1em 0;
+        font-family: "Source Code Pro";
     }
 }

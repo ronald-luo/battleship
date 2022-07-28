@@ -53,7 +53,9 @@ const GameBoard = () => {
             for (let row = 0; row < rows; row++) {
                 for (let col = 0; col < cols; col++) {
 
-                    board[y + row][x + col] = matrix[row][col];
+                    if (matrix[row][col] !== 0) {
+                        board[y + row][x + col] = matrix[row][col];
+                    }
 
                     if (board[y + row][x + col] === 2) {
                         shipCoords.add(`${x + col},${y + row}`);

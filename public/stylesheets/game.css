@@ -44,18 +44,127 @@ main.game-container section.main-board {
       grid-template-rows: repeat(10, 1fr);
 }
 
-main.game-container section.main-board .main-cell:hover {
+main.game-container section.main-board .cell-main:hover {
   border: 1px solid white;
+  cursor: pointer;
 }
 
-main.game-container section.main-board .ship {
+main.game-container section.main-board .cell-sea {
+  background-color: #3a3a3c;
+}
+
+main.game-container section.main-board .cell-miss {
   background-color: #a4a4a4;
 }
 
+main.game-container section.main-board .cell-ship {
+  background-color: #92bff4;
+}
+
+main.game-container section.main-board .cell-hit {
+  background-color: #e5804a;
+}
+
 main.game-container section.side-board {
+  padding: 1em;
   width: 138px;
   height: 138px;
   margin: 1em auto 1em auto;
   background-color: #3a3a3c;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+main.game-container section.side-board .cell-side {
+  width: 27.2px;
+  height: 27.2px;
+}
+
+main.game-container section.side-board .cell-sea {
+  background-color: #3a3a3c;
+}
+
+main.game-container section.side-board .cell-ship {
+  background-color: #92bff4;
+}
+
+main.game-container section.side-board .start-button {
+  width: auto;
+  height: auto;
+  background-color: #d84747;
+  color: white;
+  font-family: "Source Code Pro";
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+}
+
+main.game-container section.side-board .start-button:active {
+  color: black;
+}
+
+main.game-container section.side-board .start-button:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  background-color: #d53a3a;
+}
+
+main.game-container .rotate-button-container {
+  width: 32px;
+  height: 32px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main.game-container .rotate-button-container .rotate-button {
+  background-color: #e5804a;
+  color: white;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main.game-container .rotate-button-container .rotate-button:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #e27034;
+  cursor: pointer;
+}
+
+main.game-container .rotate-button-container .rotate-button:active {
+  background-color: #e27034;
+}
+
+main.game-container .rotate-button-container .rotate-button:active svg {
+  fill: black;
+}
+
+main.game-container .rotate-button-container .rotate-button svg {
+  fill: white;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main.game-container h2 {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  margin: 1em 0 1em 0;
+  font-family: "Source Code Pro";
 }
 /*# sourceMappingURL=game.css.map */
