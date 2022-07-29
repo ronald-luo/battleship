@@ -1,0 +1,72 @@
+.home-container {
+    top: 10vh;
+    display: block;
+    position: relative;
+    margin: auto;
+    padding: 30px 30px;
+    width: 360px;
+    background-color: rgba(58, 58, 60, 1);
+    height: 250px;
+
+
+    h1 {
+        font-size: 30px;
+        color: white;
+        text-align: center;
+        margin: 1em 0 1em 0;
+        font-family: "Source Code Pro";
+    }
+
+    .join-container {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            background-color: darken(rgba(58, 58, 60, 1), 10%);
+            border: none;
+            font-size: 16px;
+            font-family: "Source Code Pro";
+            outline: none;
+            color: white;
+            height: auto;
+            padding: 8px 12px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1em;
+
+            input {
+                width: 49%;
+                height: auto;
+                background-color: #d74846;
+                color: white;
+                font-family: "Source Code Pro";
+                padding: 8px 12px;
+                font-size: 16px;
+                border: none;
+
+                &:active {
+                    color: black;
+                }
+
+                &:hover {
+                    transition: 0.3s;
+                    cursor: pointer;
+                    background-color: darken(rgba(222, 100, 100, 1), 10%);
+                }
+            }
+
+            // #join-button {
+                
+            // }
+
+            // #create-button {
+
+            // }
+        }
+    }
+
+
+}

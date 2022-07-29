@@ -30,11 +30,15 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-io.on('connection', () => {
-  console.log('user joined')
+io.on('connection', (socket) => {
+  console.log('user joined');
+
+  socket.on('join room', (data) => {
+    console.log("New user connected to " + data.room)
+  })
 
   io.on('disconnect', () => {
-    console.log('user left')
+    console.log('user left');
   })
 
 })
@@ -50,8 +54,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3080, () => {
-  console.log('listening to port 3080')
-})
+httpServer.listen(3080, () => {
+  console.log('listening on port 3080')
+});
 
 module.exports = app;

@@ -28,6 +28,16 @@ main.game-container {
         font-family: "Source Code Pro";
     }
 
+    small {
+        color: rgb(180, 185, 197);
+        font-family: "Source Code Pro";
+        text-align: center;
+        margin: auto;
+        display: block;
+        width: auto;
+        font-size: 17px;
+    }
+
     section.main-board {
         width: 272px;
         height: 272px;

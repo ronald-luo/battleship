@@ -31,6 +31,16 @@ main.game-container h1 {
   font-family: "Source Code Pro";
 }
 
+main.game-container small {
+  color: #b4b9c5;
+  font-family: "Source Code Pro";
+  text-align: center;
+  margin: auto;
+  display: block;
+  width: auto;
+  font-size: 17px;
+}
+
 main.game-container section.main-board {
   width: 272px;
   height: 272px;

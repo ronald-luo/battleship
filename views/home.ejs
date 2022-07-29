@@ -2,8 +2,18 @@
 <html lang="en">
 <%- include('./extends/head.ejs') -%> 
 <body>
-    <h1>
-        welcome home
-    </h1>
+
+    <main class="home-container">
+        <h1>Battleship</h1>
+        <form class="join-container" action="/join-or-create" method="POST">
+            <input type="text" name="room-id" placeholder="Enter Room Number">
+
+            <div class="button-container">
+                <input type="submit" name="join" value="Join Game" id="join-button">
+                <input type="submit" name="create" value="Create Game" id="create-button">
+            </div>
+        </form>
+    </main>
+
 </body>
 </html>

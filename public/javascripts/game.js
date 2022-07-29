@@ -3,11 +3,12 @@
 // const { Player }  = require('./components/Player');
 
 const planningPhase = (player) => {
-
     let horizontal = false;
     let allShipsPlaced = false;
+    const socket = io();
     const mainBoard = document.querySelector('.main-board');
     const sideBoard = document.querySelector('.side-board');
+    const roomId = document.querySelector('small')
 
     const getPlayer = () => player;
 
@@ -76,6 +77,10 @@ const planningPhase = (player) => {
         }
     }
 
+    const queueUp = () => {
+        socket.emit('join room', { room: roomId.textContent });
+    }
+
     const updateNextShip = () => {
         let nextShip = getPlayer().getNextShip();
         
@@ -114,34 +119,34 @@ const planningPhase = (player) => {
             return
         } else {
             document.querySelector('.rotate-button-container').remove()
-
             document.querySelector('.ship-name').textContent = 'ready?'
             allShipsPlaced = true;
 
-            let startButton = document.createElement('button');
-            startButton.textContent = 'continue'
-            startButton.classList.add('start-button')
+            let startButton = document.createElement('div');
+            startButton.textContent = 'continue';
+            startButton.setAttribute('type', 'submit');
+            startButton.classList.add('start-button');
 
             startButton.addEventListener('mouseover', () => {
-                document.querySelector('.ship-name').textContent = 'good luck!'
-            })
-
-            startButton.addEventListener('mouseout', () => {
-                document.querySelector('.ship-name').textContent = 'ready?'
-            })
-
-            startButton.addEventListener('click', () => {
-                // start game
+                document.querySelector('.ship-name').textContent = 'good luck!';
             });
 
-            sideBoard.appendChild(startButton);
+            startButton.addEventListener('mouseout', () => {
+                document.querySelector('.ship-name').textContent = 'ready?';
+            });
+
+            startButton.addEventListener('click', () => {
+                queueUp()
+            });
+
+            sideBoard.appendChild(startButton)
         };
     };
 
     const rotateShip = () => {
         getPlayer().rotateShip()
         horizontal ? horizontal = false : horizontal = true
-    }
+    };
 
     const renderData = () => {
         clearBoard();
@@ -163,8 +168,5 @@ document.addEventListener('click', () => {
 
 const rotateButton = document.querySelector('.rotate-button');
 rotateButton.addEventListener('click', game.rotateShip)
-
-
-
 
 // module.exports = { Ship, GameBoard, Player };
