@@ -26,6 +26,7 @@ main.game-container {
         text-align: center;
         margin: 1em 0 1em 0;
         font-family: "Source Code Pro";
+        cursor: pointer;
     }
 
     small {
@@ -94,6 +95,23 @@ main.game-container {
             background-color: rgba(146, 191, 244, 1);
         }
 
+        .loading {
+            animation-name: blink;
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+
+            @keyframes blink {
+                0% {
+                    background-color: darken(rgba(222, 100, 100, 1), 6%);
+                }
+                
+                100% {
+                    background-color: darken(rgba(222, 100, 100, 1), 20%);
+                }
+            }
+        }
+
         .start-button {
             width: auto;
             height: auto;
@@ -103,6 +121,7 @@ main.game-container {
             padding: 8px 12px;
             font-size: 16px;
             border: none;
+            text-align: center;
 
             &:active {
                 color: black;

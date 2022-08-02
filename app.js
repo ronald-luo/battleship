@@ -35,6 +35,7 @@ io.on('connection', (socket) => {
 
   socket.on('join room', (data) => {
     console.log("New user connected to " + data.room)
+    socket.join(data.room)
   })
 
   io.on('disconnect', () => {

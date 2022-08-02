@@ -29,6 +29,7 @@ main.game-container h1 {
   text-align: center;
   margin: 1em 0 1em 0;
   font-family: "Source Code Pro";
+  cursor: pointer;
 }
 
 main.game-container small {
@@ -103,6 +104,35 @@ main.game-container section.side-board .cell-ship {
   background-color: #92bff4;
 }
 
+main.game-container section.side-board .loading {
+  -webkit-animation-name: blink;
+          animation-name: blink;
+  -webkit-animation-duration: 1.3s;
+          animation-duration: 1.3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    background-color: #d94b4b;
+  }
+  100% {
+    background-color: #b52727;
+  }
+}
+
+@keyframes blink {
+  0% {
+    background-color: #d94b4b;
+  }
+  100% {
+    background-color: #b52727;
+  }
+}
+
 main.game-container section.side-board .start-button {
   width: auto;
   height: auto;
@@ -112,6 +142,7 @@ main.game-container section.side-board .start-button {
   padding: 8px 12px;
   font-size: 16px;
   border: none;
+  text-align: center;
 }
 
 main.game-container section.side-board .start-button:active {

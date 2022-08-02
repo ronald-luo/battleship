@@ -8,7 +8,7 @@ const planningPhase = (player) => {
     const socket = io();
     const mainBoard = document.querySelector('.main-board');
     const sideBoard = document.querySelector('.side-board');
-    const roomId = document.querySelector('small')
+    const roomId = document.querySelector('small').id;
 
     const getPlayer = () => player;
 
@@ -78,8 +78,14 @@ const planningPhase = (player) => {
     }
 
     const queueUp = () => {
-        socket.emit('join room', { room: roomId.textContent });
-    }
+        document.querySelector('.start-button').remove();
+        let waiting = document.createElement('div');
+        waiting.classList.add('start-button');
+        waiting.classList.add('loading');
+        waiting.textContent = "waiting..";
+        sideBoard.appendChild(waiting);
+        socket.emit('join room', { room: roomId });
+    };
 
     const updateNextShip = () => {
         let nextShip = getPlayer().getNextShip();
@@ -165,8 +171,5 @@ game.renderData();
 document.addEventListener('click', () => {
     game.renderData()
 })
-
-const rotateButton = document.querySelector('.rotate-button');
-rotateButton.addEventListener('click', game.rotateShip)
 
 // module.exports = { Ship, GameBoard, Player };

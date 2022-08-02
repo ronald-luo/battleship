@@ -1,0 +1,30 @@
+.error-container {
+    top: 10vh;
+    display: block;
+    position: relative;
+    margin: auto;
+    padding: 30px 30px;
+    width: 360px;
+    background-color: rgba(58, 58, 60, 1);
+    height: 250px;
+
+    h1 {
+        font-size: 30px;
+        color: white;
+        text-align: center;
+        margin: 1em 0 1em 0;
+        font-family: "Source Code Pro";
+    }
+
+    p {
+        color: rgb(180, 185, 197);
+        font-family: "Source Code Pro";
+        font-size: 18.5px;
+        line-height: 30px;
+
+        a {
+            text-decoration: none;
+            color: rgba(146, 191, 244, 1);
+        }
+    }
+}
