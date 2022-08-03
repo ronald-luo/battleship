@@ -1,13 +1,11 @@
 *, *::before, *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
   width: 100%;
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
@@ -22,7 +20,6 @@ main.game-container {
   padding: 30px 10px;
   width: 375px;
 }
-
 main.game-container h1 {
   font-size: 30px;
   color: white;
@@ -31,9 +28,8 @@ main.game-container h1 {
   font-family: "Source Code Pro";
   cursor: pointer;
 }
-
-main.game-container .score-box {
-  color: #cbd0dd;
+main.game-container .move-box {
+  color: rgb(203, 208, 221);
   font-family: "Source Code Pro";
   text-align: center;
   margin: auto;
@@ -42,9 +38,8 @@ main.game-container .score-box {
   font-size: 17px;
   line-height: 27px;
 }
-
 main.game-container small {
-  color: #b4b9c5;
+  color: rgb(180, 185, 197);
   font-family: "Source Code Pro";
   text-align: center;
   margin: 1em auto 0 auto;
@@ -53,95 +48,71 @@ main.game-container small {
   font-size: 10.5px;
   line-height: 17px;
 }
-
 main.game-container section.main-board {
   width: 272px;
   height: 272px;
   margin: 1em auto 1em auto;
-  background-color: #3a3a3c;
-  display: -ms-grid;
+  background-color: rgb(58, 58, 60);
   display: grid;
-  -ms-grid-columns: (1fr)[10];
-      grid-template-columns: repeat(10, 1fr);
-  -ms-grid-rows: (1fr)[10];
-      grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
 }
-
 main.game-container section.main-board .cell-main:hover {
   border: 1px solid white;
   cursor: pointer;
 }
-
 main.game-container section.main-board .cell-sea {
-  background-color: #3a3a3c;
+  background-color: rgb(58, 58, 60);
 }
-
 main.game-container section.main-board .cell-miss {
-  background-color: #a4a4a4;
+  background-color: rgb(164, 164, 164);
 }
-
 main.game-container section.main-board .cell-ship {
-  background-color: #92bff4;
+  background-color: rgb(146, 191, 244);
 }
-
 main.game-container section.main-board .cell-hit {
-  background-color: #e5804a;
+  background-color: rgb(229, 128, 74);
 }
-
 main.game-container section.main-board .cell-opponent:hover {
   border: 1px solid white;
   cursor: pointer;
 }
-
 main.game-container section.side-board {
   padding: 1em;
   width: 138px;
   height: 138px;
   margin: 1em auto 1em auto;
-  background-color: #3a3a3c;
-  display: -ms-grid;
+  background-color: rgb(58, 58, 60);
   display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  justify-content: center;
+  align-content: center;
 }
-
 main.game-container section.side-board .cell-side {
   width: 27.2px;
   height: 27.2px;
 }
-
 main.game-container section.side-board .cell-self {
   width: 13.8px;
   height: 13.8px;
 }
-
 main.game-container section.side-board .cell-sea {
-  background-color: #3a3a3c;
+  background-color: rgb(58, 58, 60);
 }
-
 main.game-container section.side-board .cell-miss {
-  background-color: #a4a4a4;
+  background-color: rgb(164, 164, 164);
 }
-
 main.game-container section.side-board .cell-ship {
-  background-color: #92bff4;
+  background-color: rgb(146, 191, 244);
 }
-
 main.game-container section.side-board .cell-hit {
-  background-color: #e5804a;
+  background-color: rgb(229, 128, 74);
 }
-
 main.game-container section.side-board .cell-sea {
-  background-color: #3a3a3c;
+  background-color: rgb(58, 58, 60);
 }
-
 main.game-container section.side-board .cell-ship {
-  background-color: #92bff4;
+  background-color: rgb(146, 191, 244);
 }
-
 main.game-container section.side-board .loading {
   -webkit-animation-name: blink;
           animation-name: blink;
@@ -152,7 +123,6 @@ main.game-container section.side-board .loading {
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
 }
-
 @-webkit-keyframes blink {
   0% {
     background-color: #d94b4b;
@@ -161,7 +131,6 @@ main.game-container section.side-board .loading {
     background-color: #b52727;
   }
 }
-
 @keyframes blink {
   0% {
     background-color: #d94b4b;
@@ -170,7 +139,6 @@ main.game-container section.side-board .loading {
     background-color: #b52727;
   }
 }
-
 main.game-container section.side-board .start-button {
   width: auto;
   height: auto;
@@ -182,68 +150,47 @@ main.game-container section.side-board .start-button {
   border: none;
   text-align: center;
 }
-
 main.game-container section.side-board .start-button:active {
   color: black;
 }
-
 main.game-container section.side-board .start-button:hover {
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
   background-color: #d53a3a;
 }
-
 main.game-container .rotate-button-container {
   width: 32px;
   height: 32px;
   margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 main.game-container .rotate-button-container .rotate-button {
-  background-color: #3a3a3c;
+  background-color: rgb(58, 58, 60);
   color: white;
   border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 main.game-container .rotate-button-container .rotate-button:hover {
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   background-color: #e27034;
   cursor: pointer;
 }
-
 main.game-container .rotate-button-container .rotate-button:active {
   background-color: #e27034;
 }
-
 main.game-container .rotate-button-container .rotate-button:active svg {
-  fill: black;
+  fill: rgb(0, 0, 0);
 }
-
 main.game-container .rotate-button-container .rotate-button svg {
   fill: white;
-  -webkit-transition: 0.1s;
   transition: 0.1s;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
 }
-
 main.game-container h2 {
   font-size: 16px;
   color: white;
   text-align: center;
   margin: 1em 0 1em 0;
   font-family: "Source Code Pro";
-}
-/*# sourceMappingURL=game.css.map */
+}/*# sourceMappingURL=game.css.map */

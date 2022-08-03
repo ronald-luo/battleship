@@ -64,9 +64,6 @@ const Player = (name) => {
         unplacedShips[0].shape = newMatrix
     };
 
-    const playerWon = (opponent) => {
-        return opponent.getBoard().allShipsSunk()
-    };
 
-    return { getName, attackOpp, cycleShips, getBoard, getNextShip, playerWon, unplacedShips, rotateShip };
+    return { getName, attackOpp, cycleShips, getBoard, getNextShip, unplacedShips, rotateShip };
 };

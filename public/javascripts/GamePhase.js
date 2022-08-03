@@ -6,6 +6,8 @@ const GamePhase = (player, socket) => {
     let opponentBoard = null;
     let attackedCoords = new Set();
     let firstClear = false;
+    let gameOver = false;
+    let playerTurn = true;
     
     const clearBoard = () => {
         const nodes = document.querySelectorAll('.cell-main')
@@ -42,8 +44,6 @@ const GamePhase = (player, socket) => {
         for (let row = 0; row < 10; row++) {
             for (let col = 0; col < 10; col++) {
                 const newCell = document.createElement('div');
-                // const newClass = cellMedium[String(newBoard[row][col])];
-                // newCell.classList.add(newClass);
                 newCell.classList.add('cell-opponent');
                 newCell.setAttribute('row', row);
                 newCell.setAttribute('col', col);
@@ -69,10 +69,12 @@ const GamePhase = (player, socket) => {
                 let col = Number(node.getAttribute('col'));
                 let row = Number(node.getAttribute('row'));
 
-                attackedCoords.add(`${col},${row}`);
-
-                // console.log('test attack ' + col + ', ' + row);
-                socket.emit('attack', { coord: `${col},${row}`, room: roomId, name: getPlayer().getName()});
+                if (playerTurn === true){
+                    if (!attackedCoords.has(`${col},${row}`)) {
+                        attackedCoords.add(`${col},${row}`);
+                        socket.emit('attack', { coord: `${col},${row}`, room: roomId, name: getPlayer().getName()});
+                    };
+                };
             });
         });
     };
@@ -104,7 +106,7 @@ const GamePhase = (player, socket) => {
 
     const lossDetector = () => {
         if (getPlayer().getBoard().allShipsSunk() === true) {
-            socket.emit('game_over', { name: getPlayer().getName() })
+            socket.emit('game_over', { name: getPlayer().getName(), room: roomId })
         }
     };
 
@@ -128,6 +130,21 @@ const GamePhase = (player, socket) => {
         })
     })();
 
+    const handleTurn = (() => {
+        let moveBox = document.querySelector('.move-box')
+        socket.on('handle_move', (data) => {
+            if (getPlayer().getName() === data.name) {
+                playerTurn = false;
+                moveBox.textContent = 'their move.'
+            } else {
+                playerTurn = true;
+                moveBox.textContent = 'your move.'
+            }
+
+            console.log(playerTurn)
+        });
+    })();
+
     const updateMainListener = (() => {
         socket.on('update_main', (data) => {
             if (getPlayer().getName() !== data.name) {
@@ -141,7 +158,26 @@ const GamePhase = (player, socket) => {
 
     const gameOverListener = (() => {
         socket.on('game_over', (data) => {
+            if (gameOver === false) {
+                let playAgainContainer = document.querySelector('.play-again-container');
+                let playAgainText = document.querySelector('.again-text')
+                let newRoomId = document.querySelector('.new-room-id');
+    
+                if (getPlayer().getName() === data.name) {
+                    playAgainText.textContent = 'you lost. loser';
+                } else {
+                    playAgainText.textContent = 'you won. winner';
+                }
+    
+                newRoomId.setAttribute('name', 'room-id')
+                newRoomId.setAttribute('value', data.newRoomId)
+                
+                document.querySelector('.again-button').value = "join " + data.newRoomId
+                
+                playAgainContainer.classList.add('play-again-active')
+            }
 
+            gameOver = true
         });
     })();
 
@@ -153,6 +189,5 @@ const GamePhase = (player, socket) => {
         lossDetector();
     };
 
-    return { renderData, attackListener, updateMainListener, gameOverListener }
+    return { renderData, attackListener, handleTurn, updateMainListener, gameOverListener }
 };
-

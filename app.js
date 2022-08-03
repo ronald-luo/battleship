@@ -12,7 +12,7 @@ var app = express();
 const httpServer = require("http").createServer(app);
 const options = { /* ... */ };
 const io = require("socket.io")(httpServer, options);
-const { handleJoin, handleAttack, updateMain, handleGameOver, handleMove } = require('./sockets')(io);
+const { handleJoin, handleAttack, updateMain, handleGameOver } = require('./sockets')(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,7 +35,6 @@ io.on('connection', (socket) => {
   socket.on('join_room', handleJoin);
   socket.on('attack', handleAttack);
   socket.on('game_over', handleGameOver);
-  socket.on('player_move', handleMove);
   socket.on('update_main', updateMain);
 });
 

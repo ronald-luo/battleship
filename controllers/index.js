@@ -46,10 +46,11 @@ const postJoinOrCreate = function(req, res, next) {
     }
 };
 
-const playAgain = function(req, res, next) {
-    
+const postPlayAgain = function(req, res, next) {
+    activeRooms.add(req.body['room-id'])
+    res.redirect(req.body['room-id'])
 };
 
 
 
-module.exports = { getHome, getRoom, postJoinOrCreate };
+module.exports = { getHome, getRoom, postJoinOrCreate, postPlayAgain };

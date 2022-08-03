@@ -2,6 +2,7 @@ module.exports = (io) => {
 
     let activeRooms = {};
     let activeBoards = {};
+    let activeMoves = {};
 
     const handleJoin = function (data) {
         const socket = this;
@@ -10,6 +11,7 @@ module.exports = (io) => {
             // add data.room = ['person1'] to activeRoom dict if not exist
             activeRooms[data.room] = [data.name];
             activeBoards[data.room] = {};
+            activeMoves[data.room] = [0];
             activeBoards[data.room][data.name] = data.board;
             socket.join(data.room);
         } 
@@ -27,15 +29,18 @@ module.exports = (io) => {
 
         if (activeRooms[data.room].length === 2) {
             // once 2 players are in a room, emit 'start game' event to all players in the room '13xx'
-            // console.log('starting game...');
-            // console.log(activeRooms);
-            // console.log(activeBoards);
             io.sockets.in(data.room).emit('start_game', { boards: activeBoards[data.room] });
         }
     };
 
     const handleAttack = function (data) {
-        io.sockets.in(data.room).emit('attack', {coord: data.coord, name: data.name })
+        
+        if (activeMoves[data.room].slice(-1)[0] !== data.name) {
+            activeMoves[data.room].push(data.name);
+            io.sockets.in(data.room).emit('attack', {coord: data.coord, name: data.name });
+        } 
+
+        io.sockets.in(data.room).emit('handle_move', { name: data.name });
     };
 
     const updateMain = function (data) {
@@ -45,14 +50,15 @@ module.exports = (io) => {
     };
 
     const handleGameOver = function (data) {
-        io.sockets.in(data.room).emit('game_over', { name: data.name, room: '' })
+        let newRoom = ''
+        for (let i = 0; i < 4; i++) {
+            newRoom += Math.floor(Math.random() * 9);
+        };
+
+        io.sockets.in(data.room).emit('game_over', { name: data.name, newRoomId: newRoom })
     };
 
-    const handleMove = function () {
-
-    }
-
     return {
-        handleJoin, handleAttack, updateMain, handleGameOver, handleMove
+        handleJoin, handleAttack, updateMain, handleGameOver
     };
 };

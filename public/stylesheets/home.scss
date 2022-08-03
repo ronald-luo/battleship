@@ -57,16 +57,63 @@
                     background-color: darken(rgba(222, 100, 100, 1), 10%);
                 }
             }
-
-            // #join-button {
-                
-            // }
-
-            // #create-button {
-
-            // }
         }
     }
+}
 
+.play-again-active {
+    transition: 0.3s !important;
+    opacity: 100% !important;
+    transform: translateY(0) !important;
+}
 
+.play-again-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -174px 0 0 -136px;
+    height: 272px;
+    width: 272px;
+    background-color:rgb(36, 36, 38);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-900px);
+    
+
+    h2 {
+        font-size: 18.5px;
+        color: white;
+        text-align: center;
+        margin: 1em 0 1em 0;
+        font-family: "Source Code Pro";
+        display: block;
+    }
+
+    .new-room-id {
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+
+    .again-button {
+        margin: 0 auto 0 auto;
+        height: auto;
+        background-color: #d74846;
+        color: white;
+        font-family: "Source Code Pro";
+        padding: 8px 12px;
+        font-size: 16px;
+        border: none;
+        display: block;
+
+        &:hover {
+            transition: 0.3s;
+            cursor: pointer;
+            background-color: darken(rgba(222, 100, 100, 1), 15%);
+        }
+    }
 }

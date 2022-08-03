@@ -9,4 +9,6 @@ router.get('/:room', roomController.getRoom);
 
 router.post('/join-or-create', roomController.postJoinOrCreate);
 
+router.post('/play-again', roomController.postPlayAgain);
+
 module.exports = router;

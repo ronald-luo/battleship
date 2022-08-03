@@ -5,10 +5,9 @@
   margin: auto;
   padding: 30px 30px;
   width: 360px;
-  background-color: #3a3a3c;
+  background-color: rgb(58, 58, 60);
   height: 250px;
 }
-
 .home-container h1 {
   font-size: 30px;
   color: white;
@@ -16,17 +15,10 @@
   margin: 1em 0 1em 0;
   font-family: "Source Code Pro";
 }
-
 .home-container .join-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .home-container .join-container input {
   background-color: #212122;
   border: none;
@@ -37,17 +29,11 @@
   height: auto;
   padding: 8px 12px;
 }
-
 .home-container .join-container .button-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin-top: 1em;
 }
-
 .home-container .join-container .button-container input {
   width: 49%;
   height: auto;
@@ -58,15 +44,63 @@
   font-size: 16px;
   border: none;
 }
-
 .home-container .join-container .button-container input:active {
   color: black;
 }
-
 .home-container .join-container .button-container input:hover {
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
   background-color: #d53a3a;
 }
-/*# sourceMappingURL=home.css.map */
+
+.play-again-active {
+  transition: 0.3s !important;
+  opacity: 100% !important;
+  transform: translateY(0) !important;
+}
+
+.play-again-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -174px 0 0 -136px;
+  height: 272px;
+  width: 272px;
+  background-color: rgb(36, 36, 38);
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-900px);
+}
+.play-again-container h2 {
+  font-size: 18.5px;
+  color: white;
+  text-align: center;
+  margin: 1em 0 1em 0;
+  font-family: "Source Code Pro";
+  display: block;
+}
+.play-again-container .new-room-id {
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+.play-again-container .again-button {
+  margin: 0 auto 0 auto;
+  height: auto;
+  background-color: #d74846;
+  color: white;
+  font-family: "Source Code Pro";
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  display: block;
+}
+.play-again-container .again-button:hover {
+  transition: 0.3s;
+  cursor: pointer;
+  background-color: #ca2b2b;
+}/*# sourceMappingURL=home.css.map */

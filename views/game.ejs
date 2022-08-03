@@ -2,20 +2,28 @@
 <html lang="en">
     <%- include('./extends/head.ejs') -%> 
 <body>
+    <div class="play-again-container">
+        <h2 class="again-text">you lost. loser.</h2>
+        <form action="/play-again" method="POST">
+            <input class="new-room-id" type="text">
+            <input class="again-button" value="play again" type="submit">
+        </form>
+    </div>
+
     <main class="game-container">
         <h1>Battleship</h1>
 
-        <div class="score-box">
+        <div class="move-box">
             your move.
         </div>
-
-        <small id=<%= room %> >
-            room: <%= room %>
-        </small>
 
         <section class="main-board">
 
         </section>
+
+        <small id=<%= room %> >
+            room: <%= room %>
+        </small>
 
         <section class="side-board">
             
