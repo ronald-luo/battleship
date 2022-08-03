@@ -1,8 +1,4 @@
-// const { Ship } = require('./components/Ship');
-// const { GameBoard } = require('./components/GameBoard');
-// const { Player }  = require('./components/Player');
-
-const planningPhase = (player) => {
+const PlanPhase = (player) => {
     let horizontal = false;
     let allShipsPlaced = false;
     const socket = io();
@@ -53,14 +49,7 @@ const planningPhase = (player) => {
 
                 if (player.unplacedShips.length > 0) {
                     player.cycleShips(col, row);
-                    // console.log('ship placed');
-                } else {
-                    // test attacking self 
-                    // player.getBoard().recieveAttack(col, row);
-                    console.log('attack ' + col + ', ' + row);
-                }
-
-                // console.log(player.getBoard().board);
+                } 
             });
         });
 
@@ -84,7 +73,18 @@ const planningPhase = (player) => {
         waiting.classList.add('loading');
         waiting.textContent = "waiting..";
         sideBoard.appendChild(waiting);
-        socket.emit('join room', { room: roomId });
+        socket.emit('join_room', { room: roomId, name: getPlayer().getName(), board: getPlayer().getBoard().board});
+
+        socket.on('start_game', (data) => {
+            // console.log('starting game')
+            const game = GamePhase(player, socket)
+
+            game.renderData()
+
+            document.addEventListener('click', () => {
+                game.renderData()
+            })
+        })
     };
 
     const updateNextShip = () => {
@@ -163,13 +163,3 @@ const planningPhase = (player) => {
 
     return { renderData, rotateShip }
 };
-
-let player = Player('nick');
-let game = planningPhase(player);
-game.renderData();
-
-document.addEventListener('click', () => {
-    game.renderData()
-})
-
-// module.exports = { Ship, GameBoard, Player };

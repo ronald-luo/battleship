@@ -32,14 +32,26 @@ main.game-container h1 {
   cursor: pointer;
 }
 
-main.game-container small {
-  color: #b4b9c5;
+main.game-container .score-box {
+  color: #cbd0dd;
   font-family: "Source Code Pro";
   text-align: center;
   margin: auto;
   display: block;
   width: auto;
   font-size: 17px;
+  line-height: 27px;
+}
+
+main.game-container small {
+  color: #b4b9c5;
+  font-family: "Source Code Pro";
+  text-align: center;
+  margin: 1em auto 0 auto;
+  display: block;
+  width: auto;
+  font-size: 10.5px;
+  line-height: 17px;
 }
 
 main.game-container section.main-board {
@@ -76,6 +88,11 @@ main.game-container section.main-board .cell-hit {
   background-color: #e5804a;
 }
 
+main.game-container section.main-board .cell-opponent:hover {
+  border: 1px solid white;
+  cursor: pointer;
+}
+
 main.game-container section.side-board {
   padding: 1em;
   width: 138px;
@@ -94,6 +111,27 @@ main.game-container section.side-board {
 main.game-container section.side-board .cell-side {
   width: 27.2px;
   height: 27.2px;
+}
+
+main.game-container section.side-board .cell-self {
+  width: 13.8px;
+  height: 13.8px;
+}
+
+main.game-container section.side-board .cell-sea {
+  background-color: #3a3a3c;
+}
+
+main.game-container section.side-board .cell-miss {
+  background-color: #a4a4a4;
+}
+
+main.game-container section.side-board .cell-ship {
+  background-color: #92bff4;
+}
+
+main.game-container section.side-board .cell-hit {
+  background-color: #e5804a;
 }
 
 main.game-container section.side-board .cell-sea {
@@ -169,7 +207,7 @@ main.game-container .rotate-button-container {
 }
 
 main.game-container .rotate-button-container .rotate-button {
-  background-color: #e5804a;
+  background-color: #3a3a3c;
   color: white;
   border: none;
   display: -webkit-box;

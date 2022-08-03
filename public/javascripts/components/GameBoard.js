@@ -11,8 +11,6 @@
  * row is y
  */
 
-// const { Ship } = require('./Ship');
-
 const GameBoard = () => {
     const placedShipCoords = {}; // ["x,y", ...]
     const placedShips = []; // [{Object: Ship}, ...]
@@ -102,5 +100,3 @@ const GameBoard = () => {
 
     return { board, placedShips, placedShipCoords, allShipsSunk, placeShip, recieveAttack };
 };
-
-// module.exports = { GameBoard };

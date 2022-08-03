@@ -40,9 +40,14 @@ const postJoinOrCreate = function(req, res, next) {
         while (activeRooms.has(roomId)) {
             roomId = createRoomId();
         };
+
         activeRooms.add(roomId)
         res.redirect(roomId)
     }
+};
+
+const playAgain = function(req, res, next) {
+    
 };
 
 

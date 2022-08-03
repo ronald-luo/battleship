@@ -19,5 +19,3 @@ const Ship = (name, coords) => {
 
     return { getCoords, getName, hit, isSunk, hitCoords, shipCoords };
 };
-
-// module.exports = { Ship };

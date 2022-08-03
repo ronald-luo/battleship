@@ -1,5 +1,3 @@
-// const { GameBoard } = require('./GameBoard');
-
 const Player = (name) => {
     const unplacedShips = [
         {
@@ -70,7 +68,5 @@ const Player = (name) => {
         return opponent.getBoard().allShipsSunk()
     };
 
-    return { attackOpp, cycleShips, getBoard, getNextShip, playerWon, unplacedShips, rotateShip };
+    return { getName, attackOpp, cycleShips, getBoard, getNextShip, playerWon, unplacedShips, rotateShip };
 };
-
-// module.exports = { Player };

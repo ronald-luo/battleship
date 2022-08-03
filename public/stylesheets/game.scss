@@ -29,14 +29,26 @@ main.game-container {
         cursor: pointer;
     }
 
-    small {
-        color: rgb(180, 185, 197);
+    .score-box {
+        color: rgb(203, 208, 221);
         font-family: "Source Code Pro";
         text-align: center;
         margin: auto;
         display: block;
         width: auto;
         font-size: 17px;
+        line-height: 27px;
+    }
+
+    small {
+        color: rgb(180, 185, 197);
+        font-family: "Source Code Pro";
+        text-align: center;
+        margin: 1em auto 0 auto;
+        display: block;
+        width: auto;
+        font-size: 10.5px;
+        line-height: 17px;
     }
 
     section.main-board {
@@ -70,6 +82,13 @@ main.game-container {
         .cell-hit {
             background-color: rgba(229, 128, 74, 1)
         }
+
+        .cell-opponent {
+            &:hover {
+                border: 1px solid white;
+                cursor: pointer;
+            }
+        }
     }
 
     section.side-board {
@@ -85,6 +104,27 @@ main.game-container {
         .cell-side {
             width: 27.2px;
             height: 27.2px;
+        }
+
+        .cell-self {
+            width: 13.8px;
+            height: 13.8px;
+        }
+
+        .cell-sea {
+            background-color: rgba(58, 58, 60, 1);
+        } 
+
+        .cell-miss {
+            background-color: rgba(164, 164, 164, 1);
+        }
+        
+        .cell-ship {
+            background-color: rgba(146, 191, 244, 1);
+        }
+        
+        .cell-hit {
+            background-color: rgba(229, 128, 74, 1)
         }
 
         .cell-sea {
@@ -144,7 +184,7 @@ main.game-container {
 
 
         .rotate-button {
-            background-color:rgba(229, 128, 74, 1);
+            background-color: rgba(58, 58, 60, 1);
             color: white;
             border: none;
             display: flex;

@@ -12,6 +12,7 @@ var app = express();
 const httpServer = require("http").createServer(app);
 const options = { /* ... */ };
 const io = require("socket.io")(httpServer, options);
+const { handleJoin, handleAttack, updateMain, handleGameOver, handleMove } = require('./sockets')(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,18 +32,12 @@ app.use(function(req, res, next) {
 });
 
 io.on('connection', (socket) => {
-  console.log('user joined');
-
-  socket.on('join room', (data) => {
-    console.log("New user connected to " + data.room)
-    socket.join(data.room)
-  })
-
-  io.on('disconnect', () => {
-    console.log('user left');
-  })
-
-})
+  socket.on('join_room', handleJoin);
+  socket.on('attack', handleAttack);
+  socket.on('game_over', handleGameOver);
+  socket.on('player_move', handleMove);
+  socket.on('update_main', updateMain);
+});
 
 // error handler
 app.use(function(err, req, res, next) {
