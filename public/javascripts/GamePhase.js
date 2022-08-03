@@ -140,8 +140,6 @@ const GamePhase = (player, socket) => {
                 playerTurn = true;
                 moveBox.textContent = 'your move.'
             }
-
-            console.log(playerTurn)
         });
     })();
 
